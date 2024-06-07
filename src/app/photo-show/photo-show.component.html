@@ -1,3 +1,11 @@
 <div>
-    <img [src]="imageLink"/>
+    <div>
+        <button (click)="changePhoto()">
+            Cambia Immagine!
+        </button>
+    </div>
+    <img
+    *ngIf="imageLink"
+    [src]="imageLink"/>
+    
 </div>

@@ -12,12 +12,17 @@ export class PhotoShowComponent {
   imageLink = ''; //creazione variabile dove allocare la response e caricarla con property binding nel template
 
 constructor(private phostosService: PhotosService){ //injection del service nel costruttore
-  this.phostosService.getPhoto().subscribe((response) => {  //la chiamata restituisce un observable quindi sottoscrizione
-    //console.log(response.urls.regular);
-    this.imageLink = response.urls.regular;
-  });
+  this.fetchImage();
 }
   
+changePhoto(){
+    this.fetchImage();
+}
 
+fetchImage(){
+    this.phostosService.getPhoto().subscribe((response) => {  //la chiamata restituisce un observable quindi sottoscrizione
+      this.imageLink = response.urls.regular;
+    });
+}
   
 }
